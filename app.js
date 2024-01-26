@@ -11,7 +11,10 @@ asignarTextElem('h1','Juego de adivina el numero')
 asignarTextElem('p','Escribe un numero del 1 al 20')
 
 function intentoUser(){
-    alert('click desde el boton');
+    let numUser = document.getElementById('numUser').value;
+    if (numUser===numSec) {
+        asignarTextElem('p','Acertaste el numero')
+    }
     return;
 };
 
