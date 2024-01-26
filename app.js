@@ -1,9 +1,11 @@
 
 let parrafo = document.querySelector('p');
+let numMax =10;
 let intentos =1;
 let intMax =3;
 parrafo.innerHTML = 'Escribe un Numero';
 let numSec = generarNumeroSecreto();
+let listaNumeros = [];
 condicionesIniciales()
 function asignarTextElem(elemento, texto){
     let elementoHTML= document.querySelector(elemento);
@@ -44,18 +46,32 @@ function reiniciar() {
 }
 
 function generarNumeroSecreto() {
-    let num = Math.floor(Math.random()*10)+1;
-    return num;
+    let numGen = Math.floor(Math.random()*numMax)+1;
+    
+    if (listaNumeros.length==numMax){
+        asignarTextElem('p','Ya se adivinaron los numeros posibles');
+
+    }else{
+        if (listaNumeros.includes(numGen)){
+            return generarNumeroSecreto();
+        }else{
+            listaNumeros.push(numGen);
+            alert(`el numero secreto es ${numGen}`);
+            return numGen
+        }
+    }
+
+    
 };
 
 function condicionesIniciales() {
     asignarTextElem('h1','Juego de adivina el numero');
-    asignarTextElem('p','Escribe un numero del 1 al 20');
+    asignarTextElem('p',`Escribe un numero del 1 al ${numMax}`);
     intentos=1;
     document.getElementById('reiniciar').setAttribute('disabled', true);
 }
 
 //alert(`el numero secreto es ${numSec}`);
 
-alert(`el numero secreto es ${numSec}`);
+
 //alert(`el numero del usuario es ${numSec}`);
