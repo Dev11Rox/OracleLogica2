@@ -1,17 +1,17 @@
 
-let parrafo = document.querySelector('p');
-let numMax =10;
-let intentos =1;
-let intMax =3;
-parrafo.innerHTML = 'Escribe un Numero';
-let numSec = generarNumeroSecreto();
+let numSec = 0;
+let intentos = 0;
 let listaNumeros = [];
-condicionesIniciales()
+let numMax = 10;
+//reiniciar();
+condicionesIniciales();
+
+
 function asignarTextElem(elemento, texto){
     let elementoHTML= document.querySelector(elemento);
     elementoHTML.innerHTML=texto;
     return;
-}
+};
 
 
 function intentoUser(){
@@ -24,16 +24,16 @@ function intentoUser(){
             asignarTextElem('p','El número es incorrecto, prueba con uno menor'); 
         }else if(numUser<numSec) {
             asignarTextElem('p','El número es incorrecto, prueba con uno mayor');
-        }
+        };
         intentos++;
         limpiar();
-    }
+    };
     return;
 };
 function limpiar() {
     document.querySelector('#numUser').value='';
     
-}
+};
 
 function reiniciar() {
     limpiar();
@@ -41,12 +41,14 @@ function reiniciar() {
     //generar el numero aleatorio
     //reiniciar contador de intentos
     condicionesIniciales();
+    document.querySelector('#reiniciar').setAttribute('disabled','true');
     //desahilitar el boton
     
-}
+};
 
 function generarNumeroSecreto() {
     let numGen = Math.floor(Math.random()*numMax)+1;
+    //alert(`el numero secreto generado es ${numSec}`);
     
     if (listaNumeros.length==numMax){
         asignarTextElem('p','Ya se adivinaron los numeros posibles');
@@ -56,8 +58,7 @@ function generarNumeroSecreto() {
             return generarNumeroSecreto();
         }else{
             listaNumeros.push(numGen);
-            alert(`el numero secreto es ${numGen}`);
-            return numGen
+            return numGen;
         }
     }
 
@@ -67,9 +68,11 @@ function generarNumeroSecreto() {
 function condicionesIniciales() {
     asignarTextElem('h1','Juego de adivina el numero');
     asignarTextElem('p',`Escribe un numero del 1 al ${numMax}`);
+    numSec = generarNumeroSecreto();
     intentos=1;
-    document.getElementById('reiniciar').setAttribute('disabled', true);
-}
+    alert(`el numero secreto es ${numSec}`);
+    //document.getElementById('reiniciar').setAttribute('disabled', true);
+};
 
 //alert(`el numero secreto es ${numSec}`);
 
