@@ -23,5 +23,4 @@ function generarNumeroSecreto() {
     return num;
 }
 
-let numSec = generarNumeroSecreto();
 //alert(`el numero secreto es ${numSec}`);
