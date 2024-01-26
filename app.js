@@ -1,5 +1,7 @@
 
 let parrafo = document.querySelector('p');
+let intentos =1;
+let intMax =3;
 parrafo.innerHTML = 'Escribe un Numero';
 
 function asignarTextElem(elemento, texto){
@@ -24,3 +26,6 @@ function generarNumeroSecreto() {
 }
 
 //alert(`el numero secreto es ${numSec}`);
+
+alert(`el numero secreto es ${numSec}`);
+//alert(`el numero del usuario es ${numSec}`);
